@@ -1,0 +1,697 @@
+/* 전역 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Figtree', -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #171A20;
+    background: radial-gradient(circle at 30% 0%, #F4F5F7, #E7E9ED);
+    min-height: 100vh;
+}
+
+/* 헤더 */
+.header {
+    position: sticky;
+    top: 0;
+    background: #FFFFFF;
+    border-bottom: 1px solid #E6E8EC;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: #171A20;
+}
+
+.main-nav {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-tab {
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.nav-tab.active {
+    background-color: #EEF0FE;
+    color: #4F46E5;
+}
+
+/* 메인 콘텐츠 */
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.view {
+    display: none;
+}
+
+.view.active {
+    display: block;
+}
+
+/* 캘린더 뷰 */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.nav-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: #FFFFFF;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+    background-color: #F7F8FA;
+    transform: scale(1.05);
+}
+
+.current-month {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 12px;
+    text-align: center;
+}
+
+.view-tabs {
+    display: flex;
+    gap: 4px;
+}
+
+.view-tab {
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: #F7F8FA;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+}
+
+.view-tab.active {
+    background-color: #4F46E5;
+    color: white;
+}
+
+.today-btn {
+    padding: 8px 16px;
+    border-radius: 10px;
+    background: #4F46E5;
+    color: white;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.today-btn:hover {
+    background-color: #4338CA;
+}
+
+/* 캘린더 그리드 */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    margin-bottom: 50px;
+    background: #E6E8EC;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.calendar-header-cell {
+    padding: 12px 8px;
+    text-align: center;
+    font-weight: 600;
+    background: #F7F8FA;
+    position: sticky;
+    top: 70px;
+    z-index: 10;
+}
+
+.calendar-cell {
+    min-height: 100px;
+    padding: 8px;
+    background: white;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.calendar-cell:hover {
+    background-color: #F7F8FA;
+}
+
+.other-month {
+    color: #C2C6CE;
+    background-color: #fafafa;
+}
+
+.today-cell {
+    background-color: #EEF0FE;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.event-chip {
+    padding: 4px 8px;
+    margin-bottom: 4px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.event-chip:hover {
+    transform: scale(1.02);
+}
+
+/* 이벤트 칩 색상 */
+.event-chip.work { background-color: #E2E8F0; color: #171A20; }
+.event-chip.personal { background-color: #FEF3C7; color: #92400E; }
+.event-chip.health { background-color: #D1FAE5; color: #047857; }
+.event-chip.deadline { background-color: #FEE2E2; color: #991B1B; }
+.event-chip.important { background-color: #E2E8F0; color: #171A20; }
+
+/* 팝업 버튼 (FAB) */
+.fab {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #4F46E5;
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    transition: all 0.2s ease;
+}
+
+.fab:hover {
+    background: #4338CA;
+    transform: scale(1.05);
+}
+
+/* 목록 뷰 */
+.list-header {
+    margin-bottom: 16px;
+}
+
+.search-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+#search-input {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #E6E8EC;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: #4F46E5;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+.search-btn {
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 1px solid #E6E8EC;
+    background: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: none;
+    background: #F7F8FA;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s ease;
+}
+
+.filter-btn.active {
+    background-color: #4F46E5;
+    color: white;
+}
+
+/* 이벤트 리스트 */
+.event-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 14px;
+    background: #FFFFFF;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.event-color-bar {
+    width: 3px;
+    height: 100%;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.event-details {
+    flex: 1;
+}
+
+.event-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.event-date {
+    font-size: 12.5px;
+    color: #7C828D;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.event-location {
+    font-size: 11.5px;
+    color: #7C828D;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.event-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.event-actions button {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    border: none;
+    background: #F7F8FA;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.event-actions button:hover {
+    background: #4F46E5;
+    color: white;
+}
+
+/* 설정 뷰 */
+.settings-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.setting-section {
+    margin-bottom: 32px;
+    padding: 16px;
+    border-radius: 14px;
+    background: #FFFFFF;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.setting-section h3 {
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.categories-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.category-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: #F7F8FA;
+}
+
+.category-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.add-category-btn, .export-btn, .import-btn {
+    padding: 8px 16px;
+    border-radius: 10px;
+    border: 1px solid #E6E8EC;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.export-btn, .import-btn {
+    background: #F7F8FA;
+}
+
+.theme-toggle {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.theme-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+/* 모달 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal {
+    background: white;
+    border-radius: 14px;
+    width: 90%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 40px -32px rgba(23,26,32,0.28);
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #EEF0F3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #7C828D;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+    background: #F7F8FA;
+    color: #171A20;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #5B616E;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+#event-form input,
+#event-form select,
+#event-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #E6E8EC;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    background: #FFFFFF;
+    color: #171A20;
+}
+
+#event-form input:focus,
+#event-form select:focus,
+#event-form textarea:focus {
+    outline: none;
+    border-color: #4F46E5;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+.date-time-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.checkbox-group input {
+    margin-right: 8px;
+}
+
+.error-message {
+    color: #DC2626;
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
+}
+
+.modal-footer {
+    padding: 20px;
+    border-top: 1px solid #EEF0F3;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+/* 버튼 */
+.btn {
+    padding: 9px 16px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background: #4F46E5;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #4338CA;
+}
+
+.btn-secondary {
+    background: #FFFFFF;
+    border: 1px solid #E6E8EC;
+    color: #5B616E;
+}
+
+.btn-danger {
+    background: #DC2626;
+    color: white;
+}
+
+/* 토스트 알림 */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 24px;
+    border-radius: 10px;
+    background: #171A20;
+    color: white;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.toast.show {
+    opacity: 1;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .calendar-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .current-month {
+        margin: 8px 0;
+    }
+    
+    .view-tabs {
+        justify-content: center;
+    }
+    
+    .search-bar {
+        flex-direction: column;
+    }
+    
+    .filter-buttons {
+        justify-content: center;
+    }
+    
+    .fab {
+        bottom: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+    }
+    
+    .calendar-grid {
+        gap: 0;
+    }
+    
+    .calendar-cell {
+        min-height: 44px;
+        padding: 4px;
+    }
+    
+    .event-chip {
+        font-size: 10px;
+        padding: 2px 4px;
+    }
+    
+    .modal {
+        margin: 12px;
+        max-width: none;
+    }
+    
+    .fab-bottom {
+        position: fixed;
+        right: 24px;
+        bottom: 70px;
+    }
+}
